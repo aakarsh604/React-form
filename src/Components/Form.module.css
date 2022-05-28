@@ -1,0 +1,21 @@
+.table {
+    width: 1100px;
+    margin: auto;
+    margin-top: 50px;
+    border: 2px solid black;
+    outline: none;
+}
+
+.headrow {
+    height: 30px;
+    width: 300px;
+    /* border: 1px solid blue; */
+}
+
+.bodyrow {
+    width: 30px;
+}
+
+.address {
+    width: 1000px;
+}
