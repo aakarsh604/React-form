@@ -19,3 +19,21 @@
 .address {
     width: 1000px;
 }
+
+.npbtn {
+    margin-left: -25px;
+    margin-top: 20px;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    padding: 0px 20px;
+    background-color: rgba(0, 117, 235, 0.859);
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.npbtn:hover {
+    background-color: blue;
+    color: white;
+  }

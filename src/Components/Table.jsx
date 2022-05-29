@@ -2,7 +2,7 @@ import React from "react";
 import TableItem from "./TableItem";
 import styles from "../Components/Form.module.css";
 
-const Table = ({ data }) => {
+const Table = ({ data, setpage, page, total }) => {
   return (
     <div>
       <table className={styles.table}>
@@ -19,6 +19,34 @@ const Table = ({ data }) => {
         </thead>
         <tbody>
           <TableItem data={data} />
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <button
+                className={styles.npbtn}
+                onClick={() => {
+                  if (page >= 1) {
+                    setpage(page - 1);
+                  }
+                }}
+              >
+                Prev
+              </button>
+            </td>
+            <td>
+              <button
+                className={styles.npbtn}
+                onClick={() => {
+                  if  ( page * 5 <= total ){
+                    setpage(page + 1);
+                  }
+                }}
+              >
+                Next
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

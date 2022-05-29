@@ -1,10 +1,11 @@
 import React , {useRef, useState} from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
-const Forms = ({setdata, data}) => {
+const Forms = ({setdata, data, setpage, page, settotal, total}) => {
   const [form, setForm] = useState({});
 
   const nameref = useRef()
-  const passref = useRef();
 
   const onChange = (e) => {
     let { name, value, type, checked, files } = e.target;
@@ -27,11 +28,25 @@ const Forms = ({setdata, data}) => {
     }
   };
 
+  const saveData = async (form) => {
+    const res = await axios.post("http://localhost:8080/forms", form);
+    setdata([...data, res.data]);
+  }
+
   const handleOnSubmit = (e) => {
       e.preventDefault();
-      setdata([...data, form]);
-      if (!form.username) nameref.current.focus();
+      saveData(form);
   }
+
+  useEffect( ()=> {
+    const getData = async () => {
+        const res = await axios(`http://localhost:8080/forms?_page=${page}&_limit=5`);
+        setdata(res.data)
+        settotal(res.headers["x-total-count"]);
+    }
+    getData();
+  }, [page]);
+
   return (
     <div>
      <h1>EMPLOYEE FORM</h1>
